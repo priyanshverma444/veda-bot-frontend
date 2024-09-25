@@ -55,7 +55,11 @@ function App() {
           ) : (
             <>
               <Route path="/" element={<Home />} />
+              <Route path="/chatwithbot" element={<Signup />} />
+              <Route path="/healthhistory" element={<Signup />} />
+              <Route path="/nearbydoctors" element={<Signup />} />
               <Route path="/helpcenter" element={<Layout></Layout>} />
+              <Route path="/profile" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="*" element={<NotFound />} />
