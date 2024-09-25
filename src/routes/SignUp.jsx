@@ -18,13 +18,13 @@ import logo from "../../src/assets/img/healthai-favicon.png";
 const SignUp = () => {
   const [formData, setFormData] = useState({
     username: "",
-    address: "",
-    email: "",
-    password: "",
-    date: "",
-    city: "",
+    dob: "",
     gender: "",
+    email: "",
+    address: "",
+    city: "",
     pincode: "",
+    password: "",
   });
 
   const backendUrl =
@@ -73,6 +73,11 @@ const SignUp = () => {
       }
     } catch (error) {
       console.error("Error:", error);
+      if (error.response && error.response.status === 404) {
+        console.error("Error 404: API endpoint not found");
+      } else {
+        console.error("Error:", error.message);
+      }
       toast({
         title: "An error occurred",
         description: "Please try again later",
@@ -124,7 +129,7 @@ const SignUp = () => {
           <Flex mb="4" className="space-x-2">
             <Input
               required
-              name="date"
+              name="dob"
               onChange={handleInputChange}
               focusBorderColor="white"
               size="md"
@@ -140,14 +145,14 @@ const SignUp = () => {
               onChange={handleInputChange}
               focusBorderColor="white"
             >
-              <option style={{ backgroundColor: "rgb(59 7 100)" }} value="">
+              <option style={{ backgroundColor: "rgb(5 46 22)" }} value="">
                 Select your gender
               </option>
-              <option style={{ backgroundColor: "rgb(59 7 100)" }} value="Male">
+              <option style={{ backgroundColor: "rgb(5 46 22)" }} value="Male">
                 Male
               </option>
               <option
-                style={{ backgroundColor: "rgb(59 7 100)" }}
+                style={{ backgroundColor: "rgb(5 46 22)" }}
                 value="Female"
               >
                 Female
