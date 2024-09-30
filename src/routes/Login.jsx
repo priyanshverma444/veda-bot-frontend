@@ -12,7 +12,8 @@ import {
   Image,
 } from "@chakra-ui/react";
 import axios from "axios";
-import logo from "../../src/assets/img/healthai-favicon.png";
+import logo from "../../src/assets/img/veda-bot-favicon.png";
+import bgimg from "../../src/assets/img/veda-bot-bg.png";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -89,7 +90,11 @@ const Login = () => {
   };
 
   return (
-    <Flex className="flex justify-center items-center h-screen">
+    <Flex className="flex justify-center items-center h-screen" style={{
+      backgroundImage: `url(${bgimg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }}>
       <Box
         as="form"
         onSubmit={handleSubmit}
