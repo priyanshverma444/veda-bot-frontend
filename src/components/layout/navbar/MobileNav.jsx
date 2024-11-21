@@ -12,8 +12,8 @@ const MobileNav = () => {
       icon: <TbMessageChatbotFilled className="w-9 h-9 mx-2" />,
     },
     {
-      to: "/healthhistory",
-      name: "Your health history",
+      to: "/blogs",
+      name: "Blogs",
       icon: <RiHealthBookFill className="w-9 h-9 mx-2" />,
     },
     {

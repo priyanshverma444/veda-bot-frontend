@@ -9,29 +9,29 @@ const Nav = () => {
     {
       to: "/chatwithbot",
       name: "Chat with our bot",
-      icon: <TbMessageChatbotFilled className="w-9 h-9 mx-2" />,
+      icon: <TbMessageChatbotFilled className="w-9 h-9 mx-1" />,
     },
     {
-      to: "/healthhistory",
-      name: "Your health history",
-      icon: <RiHealthBookFill className="w-9 h-9 mx-2" />,
+      to: "/blogs",
+      name: "Blogs",
+      icon: <RiHealthBookFill className="w-9 h-9 mx-1" />,
     },
     {
       to: "/nearbydoctors",
       name: "Nearby doctors",
-      icon: <FaUserDoctor className="w-9 h-9 mx-2" />,
+      icon: <FaUserDoctor className="w-9 h-9 mx-1" />,
     },
     {
       to: "/helpcenter",
       name: "Help center",
-      icon: <MdHelpCenter className="w-9 h-9 mx-2" />,
+      icon: <MdHelpCenter className="w-9 h-9 mx-1" />,
     },
   ];
   const location = useLocation();
 
   return (
     <div className="h-full sm:max-lg:w-1/6 min-[320px]:max-sm:hidden">
-      <div className="flex justify-center my-2">
+      <div className="flex justify-center">
         {navLinks.map((link) => {
           const isActive = location.pathname.startsWith(link.to);
           return (
@@ -39,7 +39,7 @@ const Nav = () => {
               key={link.to}
               to={link.to}
               className={`flex items-center ${
-                isActive ? "text-green-950" : "text-green-800 hover:underline"
+                isActive ? "text-green-800" : "text-green-900 hover:underline"
               } font-bold py-2.5 px-4 mx-5`}
             >
               {link.icon}

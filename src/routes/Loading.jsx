@@ -17,7 +17,7 @@ const Loading = () => {
           alt="Logo"
         />
         <Text className="text-center mb-10 text-green-900" fontWeight="bold" fontSize="5xl">
-          Veda Bot
+          VedaBot
         </Text>
         <FaSpinner className="animate-spin text-green-900 text-6xl mb-3" />
         <Text className="text-center text-green-900" fontWeight="bold" fontSize="lg">
