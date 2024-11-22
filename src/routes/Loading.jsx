@@ -12,11 +12,11 @@ const Loading = () => {
     }}>
       <div className="flex flex-col items-center">
       <Image
-          className="h-44 w-44 mx-auto justify-center"
+          className="h-36 w-36 mx-auto justify-center"
           src={logo}
           alt="Logo"
         />
-        <Text className="text-center mb-10 text-green-900" fontWeight="bold" fontSize="5xl">
+        <Text className="text-center mb-10 text-green-900" fontWeight="bold" fontSize="4xl">
           VedaBot
         </Text>
         <FaSpinner className="animate-spin text-green-900 text-6xl mb-3" />

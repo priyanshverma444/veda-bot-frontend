@@ -34,7 +34,7 @@ const UserBio = () => {
 
     const handleUpdateBio = async () => {
         if (!updatedBio.trim()) {
-            showToast("warning", "The Bio cannot be empty.");
+            showToast("warning", "User bio cannot be empty.");
             return;
         }
         try {
@@ -51,13 +51,13 @@ const UserBio = () => {
             );
 
             if (response.status === 200) {
-                showToast("success", "Bio updated successfully");
+                showToast("success", "User bio updated successfully");
                 setIsEditingBio(false);
                 setUserData({ ...userData, bio: updatedBio });
             }
         } catch (error) {
-            console.error("Error updating Bio", error);
-            showToast("error", "Error updating Bio");
+            console.error("Error in updating user bio", error);
+            showToast("error", "Error in updating user bio");
         }
     };
 
@@ -76,7 +76,7 @@ const UserBio = () => {
                 {isEditingBio ? (
                     <div className="w-full flex flex-col justify-center items-center">
                         <textarea
-                            className="w-full p-2 px-3 h-28 mt-1 shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full p-2 px-3 h-28 mt-1 shadow appearance-none bg-green-900 text-white rounded leading-tight focus:outline-none focus:shadow-outline"
                             name="text"
                             type="text"
                             value={updatedBio}
@@ -102,7 +102,7 @@ const UserBio = () => {
                     </div>
                 ) : (
                     <div className="flex justify-center text-center items-center flex-col">
-                        <Tag fontWeight="" colorScheme="" className="mt-4">
+                        <Tag fontWeight="bold" className="mt-4 text-green-900">
                             {userData.bio}.
                         </Tag>
                         <Tag

@@ -47,14 +47,14 @@ const ImageCarousel = () => {
     };
 
     return (
-        <div className="w-full max-w-[850px] mx-auto mt-4 mb-2 overflow-hidden px-4 sm:px-6"> {/* Added px-4 for horizontal padding */}
+        <div className="w-full max-w-[850px] mx-auto mt-14 overflow-hidden px-4 sm:px-6"> {/* Added px-4 for horizontal padding */}
             <Slider {...settings}>
                 {images.map((image, index) => (
                     <div key={index} className="w-full"> {/* Ensure each slide takes full width */}
                         <img
                             src={image}
                             alt={`Slide ${index + 1}`}
-                            className="h-[350px] md:h-[350px] object-cover rounded-lg w-full" // Ensure the image is responsive
+                            className="h-[300px] md:h-[300px] object-cover rounded-lg w-full" // Ensure the image is responsive
                         />
                     </div>
                 ))}

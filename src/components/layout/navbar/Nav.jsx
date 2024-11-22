@@ -2,12 +2,12 @@ import { Link, useLocation } from "react-router-dom";
 import { TbMessageChatbotFilled } from "react-icons/tb";
 import { RiHealthBookFill } from "react-icons/ri";
 import { FaUserDoctor } from "react-icons/fa6";
-import { MdHelpCenter } from "react-icons/md";
+import { TbCheckupList } from "react-icons/tb";
 
 const Nav = () => {
   const navLinks = [
     {
-      to: "/chatwithbot",
+      to: "https://vedabot-ayurved.streamlit.app/",
       name: "Chat with our bot",
       icon: <TbMessageChatbotFilled className="w-9 h-9 mx-1" />,
     },
@@ -22,9 +22,9 @@ const Nav = () => {
       icon: <FaUserDoctor className="w-9 h-9 mx-1" />,
     },
     {
-      to: "/helpcenter",
-      name: "Help center",
-      icon: <MdHelpCenter className="w-9 h-9 mx-1" />,
+      to: "/healthcheckup",
+      name: "Health Checkup",
+      icon: <TbCheckupList className="w-9 h-9 mx-1" />,
     },
   ];
   const location = useLocation();

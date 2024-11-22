@@ -5,14 +5,12 @@ function UserDetails({ label, value }) {
     return (
         <Tag
             fontWeight="bold"
-            colorScheme="gray"
             sx={{
-                backgroundColor: "transparent",
-                color: "white",
-                border: "1px solid grey",
+                backgroundColor: "green.900", 
+                color: "white", 
                 width: "100%",
-                padding: "13px",
-                overflow: "auto",
+                textAlign: "center",
+                padding: "15px 80px 15px 10px", 
             }}
         >
             {value}

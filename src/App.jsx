@@ -16,6 +16,9 @@ import AyurvedicDiet from "./routes/blogs/AyurvedicDiet";
 import HolisticHealing from "./routes/blogs/HolisticHealing";
 import SeasonalAyurvedicPractices from "./routes/blogs/SeasonalAyurvedicPractices";
 import ManagingStressWithAyurveda from "./routes/blogs/ManagingStressWithAyurveda";
+import Panchakarma from "./routes/blogs/Panchakarma";
+import AyurvedicBeautySecrets from "./routes/blogs/AyurvedicBeautySecrets";
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -54,6 +57,8 @@ function App() {
               <Route path="/holistic-healing" element={<HolisticHealing />} />
               <Route path="/seasonal-ayurvedic-practices" element={<SeasonalAyurvedicPractices /> } />
               <Route path="/managing-stress-with-ayurveda" element={<ManagingStressWithAyurveda /> } />
+              <Route path="/panchakarma" element={<Panchakarma />} />
+              <Route path="/ayurvedic-beauty-secrets" element={<AyurvedicBeautySecrets /> } />
               <Route path="/nearbydoctors" element={<NearByDoctors /> }/>
               <Route path="/helpcenter" element={<Layout></Layout>} />
               <Route
@@ -75,6 +80,8 @@ function App() {
               <Route path="/holistic-healing" element={<HolisticHealing />} />
               <Route path="/seasonal-ayurvedic-practices" element={<SeasonalAyurvedicPractices /> } />
               <Route path="/managing-stress-with-ayurveda" element={<ManagingStressWithAyurveda /> } />
+              <Route path="/panchakarma" element={<Panchakarma />} />
+              <Route path="/ayurvedic-beauty-secrets" element={<AyurvedicBeautySecrets /> } />
               <Route path="/nearbydoctors" element={<NearByDoctors /> } />
               <Route path="/helpcenter" element={<Layout></Layout>} />
               <Route path="/profile" element={<Profile />} />

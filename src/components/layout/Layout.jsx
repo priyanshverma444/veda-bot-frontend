@@ -56,11 +56,11 @@ const Layout = () => {
       <MobileNav />
       <ImageCarousel/>
       <Box textAlign="center">
-      <Text fontSize="5xl" fontWeight="bold" fontFamily="cursive" color="green.900">
+      <Text fontSize="5xl" fontWeight="bold" fontFamily="'Dancing Script', cursive" color="green.900">
         Welcome to VedaBot
       </Text>
-      <Text fontSize="3xl" fontWeight="bold" fontFamily="cursive" color="green.900">
-      - by Veda Vitals
+      <Text fontSize="3xl" fontWeight="bold" fontFamily="'Dancing Script', cursive" color="green.900">
+      Take your health into your hands
       </Text>
       </Box>
     </div>
