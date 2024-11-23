@@ -9,7 +9,9 @@ import { useEffect, useState } from "react";
 import { Button } from "@chakra-ui/react";
 import { AiOutlineLogout } from "react-icons/ai";
 import ImageCarousel from "./imageCarousel";
-import { Text, Box } from "@chakra-ui/react";
+import { Text, Box,Flex } from "@chakra-ui/react";
+import{FaInstagram,FaRobot} from "react-icons/fa";
+import { BiCommentDetail } from "react-icons/bi";
 
 const Layout = () => {
   const [userData, setUserData] = useState({});
@@ -63,8 +65,42 @@ const Layout = () => {
       Take your health into your hands
       </Text>
       </Box>
+      
+<Flex
+          className="fixed bottom-24 right-5 lg:right-10 flex-col items-center gap-4"
+          zIndex={100}
+        >
+          <a 
+            href="https://vedabot-ayurved.streamlit.app/" 
+            className="bouncing-icon bg-green-500 rounded-full p-4 shadow-lg animate-bounce"
+          >
+            <FaRobot className="text-white text-2xl" title="Chatbot" />
+          </a>
+          <a 
+            href="https://www.instagram.com/kanishka_sharma.11/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="bg-pink-500 rounded-full p-4 shadow-lg"
+          >
+            <FaInstagram className="text-white text-2xl" title="Instagram" />
+          </a>
+          <a 
+            href="https://forms.gle/ToHhAZrKFMJhzWuK7" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="bg-blue-500 rounded-full p-4 shadow-lg"
+          >
+            <BiCommentDetail className="text-white text-2xl" title="Feedback" />
+          </a>
+        </Flex>
     </div>
   );
 };
 
 export default Layout;
+
+
+
+
+
+
