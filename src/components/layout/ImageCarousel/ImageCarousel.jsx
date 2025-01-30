@@ -1,10 +1,10 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import img1 from '../../assets/img/coursalimg1.jpg'; 
-import img2 from '../../assets/img/coursalimg2.jpg'; 
-import img3 from '../../assets/img/coursalimg3.jpg'; 
-import img4 from '../../assets/img/coursalimg4.jpg'; 
+import img1 from '../../../assets/img/coursalimg1.jpg';
+import img2 from '../../../assets/img/coursalimg2.jpg'; 
+import img3 from '../../../assets/img/coursalimg3.jpg'; 
+import img4 from '../../../assets/img/coursalimg4.jpg';
 
 const images = [img1, img2, img3, img4];
 const ImageCarousel = () => {
