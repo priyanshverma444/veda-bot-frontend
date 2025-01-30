@@ -8,7 +8,7 @@ import { fetchUserData } from "../../services/userServices";
 import { useEffect, useState } from "react";
 import { Button } from "@chakra-ui/react";
 import { AiOutlineLogout } from "react-icons/ai";
-import ImageCarousel from "./imageCarousel";
+import ImageCarousel from "./imageCarousel/ImageCarousel";
 import { Text, Box,Flex } from "@chakra-ui/react";
 import{FaInstagram,FaRobot} from "react-icons/fa";
 import { BiCommentDetail } from "react-icons/bi";
