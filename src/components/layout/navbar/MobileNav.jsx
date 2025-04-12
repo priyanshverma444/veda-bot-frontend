@@ -7,7 +7,7 @@ import { TbCheckupList } from "react-icons/tb";
 const MobileNav = () => {
   const navLinks = [
     {
-      to: "/chatwithbot",
+      to: "https://vedabot-ayurveda.streamlit.app/",
       name: "Chat with our bot",
       icon: <TbMessageChatbotFilled className="w-9 h-9 mx-2" />,
     },
