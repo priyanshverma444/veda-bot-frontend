@@ -22,7 +22,7 @@ function UserDetailsSection() {
     };
 
     return (
-        <div className="w-full px-3 py-4 flex flex-col justify-between space-y-3 mx-1">
+        <div className="w-full px-3 py-4 flex flex-col justify-between space-y-3">
             <h1 className="text-3xl font-bold text-green-900 mb-4 text-center">User Details</h1>
             <div className="flex flex-col md:flex-row md:space-x-3 space-y-3 md:space-y-0">
                 <UserDetails className="w-full" label="Username" value={userData.username} />

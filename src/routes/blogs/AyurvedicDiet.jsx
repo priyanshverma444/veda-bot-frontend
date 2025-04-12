@@ -5,7 +5,6 @@ import {
     UnorderedList,
     ListItem,
     VStack,
-    Flex,
     Table,
     Thead,
     Tbody,
@@ -13,22 +12,18 @@ import {
     Th,
     Td
   } from '@chakra-ui/react';
-  import bgimg from "../../../src/assets/img/veda-bot-bg.png";
+  import Layout from '../../components/layout/Layout';
   
   const AyurvedicDiet = () => {
     return (
-      <Flex className="flex justify-center items-center h-screen" style={{
-        backgroundImage: `url(${bgimg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }}>
+      <Layout>
         <Container 
           maxW="800px" 
           p={5} 
           bg="#f0fced" 
           borderRadius="10px" 
           boxShadow="0 0 10px rgba(0,0,0,0.1)" 
-          maxH="90vh" 
+          maxH="85vh" 
           overflowY="auto"
         >
           <VStack spacing={5}>
@@ -133,7 +128,7 @@ import {
             </Text>
           </VStack>
         </Container>
-      </Flex>
+      </Layout>
     );
   };
   

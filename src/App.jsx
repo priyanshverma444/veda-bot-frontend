@@ -18,6 +18,7 @@ import SeasonalAyurvedicPractices from "./routes/blogs/SeasonalAyurvedicPractice
 import ManagingStressWithAyurveda from "./routes/blogs/ManagingStressWithAyurveda";
 import Panchakarma from "./routes/blogs/Panchakarma";
 import AyurvedicBeautySecrets from "./routes/blogs/AyurvedicBeautySecrets";
+import HealthCheckup from "./routes/HealthCheckup";
 
 
 function App() {
@@ -49,7 +50,8 @@ function App() {
           {loggedIn ? (
             <>
               <Route path="/" element={<Home />} />
-              <Route path="/chatwithbot" element={<Layout></Layout>} />
+              {/* <Route path="/chatwithbot" element={<Layout></Layout>} /> */}
+              <Route path="/healthcheckup" element={<HealthCheckup />} />
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/yoga-ayurveda" element={<YogaAyurveda />} />
               <Route path="/ayurvedic-herbs" element={<AyurvedicHerbs />} />
@@ -72,7 +74,8 @@ function App() {
           ) : (
             <>
               <Route path="/" element={<Home />} />
-              <Route path="/chatwithbot" element={<Signup />} />
+              {/* <Route path="/chatwithbot" element={<Signup />} /> */}
+              <Route path="/healthcheckup" element={<HealthCheckup />} />
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/yoga-ayurveda" element={<YogaAyurveda />} />
               <Route path="/ayurvedic-herbs" element={<AyurvedicHerbs />} />

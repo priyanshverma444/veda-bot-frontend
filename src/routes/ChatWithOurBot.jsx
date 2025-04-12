@@ -1,9 +1,7 @@
-const ChatWithOurBot = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+import Layout from "../components/layout/Layout";
 
-export default ChatWithOurBot
+const ChatWithOurBot = () => {
+  return <Layout></Layout>;
+};
+
+export default ChatWithOurBot;

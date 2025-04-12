@@ -3,15 +3,14 @@ import MobileNav from "./navbar/MobileNav";
 import Profile from "./profile/Profile";
 import { Link } from "react-router-dom";
 import logo from "../../assets/img/veda-bot-favicon.png";
-import bgimg from "../../assets/img/veda-bot-bg.png";
 import { fetchUserData } from "../../services/userServices";
 import { useEffect, useState } from "react";
 import { Button } from "@chakra-ui/react";
 import { AiOutlineLogout } from "react-icons/ai";
-import ImageCarousel from "./ImageCarousel/ImageCarousel";
-import { Text, Box } from "@chakra-ui/react";
+import bgimg from "../../assets/img/veda-bot-bg.png";
 
-const Layout = () => {
+// Add children prop to Layout
+const Layout = ({ children }) => {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
@@ -28,11 +27,16 @@ const Layout = () => {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col" style={{
-      backgroundImage: `url(${bgimg})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    }}>
+    <div 
+  className="w-full min-h-screen flex flex-col" 
+  style={{
+    backgroundImage: `url(${bgimg})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundAttachment: 'fixed' // optional - keeps image fixed while scrolling
+  }}
+>
+      {/* Navbar */}
       <div className="navbar flex justify-between items-center mt-1 p-1">
         <Link to="/" className="h-12 w-12 mx-1 flex flex-row">
           <img src={logo} alt="Logo" />
@@ -53,24 +57,13 @@ const Layout = () => {
           <Profile />
         )}
       </div>
+
       <MobileNav />
-      <ImageCarousel/>
-      <Box textAlign="center">
-      <Text fontSize="5xl" fontWeight="bold" fontFamily="'Dancing Script', cursive" color="green.900">
-        Welcome to VedaBot
-      </Text>
-      <Text fontSize="3xl" fontWeight="bold" fontFamily="'Dancing Script', cursive" color="green.900">
-      Take your health into your hands
-      </Text>
-      </Box>
+
+      {/* Main content area - where children will render */}
+      <main>{children}</main>
     </div>
   );
 };
 
 export default Layout;
-
-
-
-
-
-

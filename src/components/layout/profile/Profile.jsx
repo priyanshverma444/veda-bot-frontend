@@ -38,7 +38,7 @@ const Profile = () => {
           as={Avatar}
           size="md"
           cursor={"pointer"}
-          src={userData.userImg}
+          src={userData.userImage}
         />
         <MenuList sx={{ backgroundColor: "rgb(5 46 22)" }}>
           <MenuGroup title={userData.username}>
@@ -55,7 +55,7 @@ const Profile = () => {
           </MenuGroup>
           <MenuDivider />
           <MenuGroup>
-            <Link to="/settings">
+            {/* <Link to="/settings">
               <MenuItem
                 sx={{
                   backgroundColor: "rgb(5 46 22)",
@@ -64,7 +64,7 @@ const Profile = () => {
               >
                 <MdOutlineSettings className="text-xl mx-2" /> Settings
               </MenuItem>
-            </Link>
+            </Link> */}
             {!isUserAuthenticated() ? (
             <MenuItem
               sx={{

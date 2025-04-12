@@ -4,24 +4,19 @@ import {
     Text,
     VStack,
     Box,
-    Flex
   } from '@chakra-ui/react';
-  import bgimg from "../../../src/assets/img/veda-bot-bg.png";
+  import Layout from '../../components/layout/Layout';
   
   const AyurvedicHerbs = () => {
     return (
-      <Flex className="flex justify-center items-center h-screen" style={{
-      backgroundImage: `url(${bgimg})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    }}>
+      <Layout>
       <Container 
         maxW="800px" 
         p={5} 
         bg="#f0fced" 
         borderRadius="10px" 
         boxShadow="0 0 10px rgba(0,0,0,0.1)" 
-        maxH="90vh" // Limit the height of the container
+        maxH="85vh" // Limit the height of the container
         overflowY="auto" // Allow vertical scrolling if content exceeds height
       >
         <VStack spacing={5}>
@@ -102,7 +97,7 @@ import {
           </Text>
         </VStack>
       </Container>
-      </Flex>
+      </Layout>
     );
   };
   

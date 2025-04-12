@@ -1,17 +1,13 @@
 import { Box, Flex } from "@chakra-ui/react";
 import UserDetailsSection from "../components/profile/studentDetails/UserDetailsSection"
 import UserBio from "../components/profile/userBio/UserBio";
-import bgimg from "../../src/assets/img/veda-bot-bg.png";
+import Layout from "../components/layout/Layout";
 
 function Profile() {
 
   return (
     <div>
-      <Flex className="flex justify-center items-center h-screen" style={{
-      backgroundImage: `url(${bgimg})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    }}>
+      <Layout>
       <Flex className="md:flex-row flex-col mb-10">
         <Box
           flex="1"
@@ -25,7 +21,7 @@ function Profile() {
           <UserDetailsSection />
         </Box>
       </Flex>
-      </Flex>
+      </Layout>
     </div>
   );
 }

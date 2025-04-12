@@ -7,7 +7,7 @@ import { TbCheckupList } from "react-icons/tb";
 const MobileNav = () => {
   const navLinks = [
     {
-      to: "https://vedabot-ayurved.streamlit.app/",
+      to: "/chatwithbot",
       name: "Chat with our bot",
       icon: <TbMessageChatbotFilled className="w-9 h-9 mx-2" />,
     },
@@ -29,18 +29,18 @@ const MobileNav = () => {
   ];
 
   return (
-    <div className="navbar fixed bottom-0 w-full bg-green-950 flex justify-between border-t border-gray-700 p-2 sm:hidden min-[320px]:max-sm:block">
-      <div className="flex justify-between">
-        {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            to={link.href}
-            className={`flex items-center justify-center rounded bg-green-950 hover:underline font-bold py-2 px-4`}
-          >
-            {link.icon}
-          </Link>
-        ))}
-      </div>
+    <div className="fixed bottom-0 w-full bg-green-950 border-t border-gray-700 p-2 sm:hidden min-[320px]:max-sm:flex justify-around">
+      {navLinks.map((link) => (
+        <Link
+          key={link.to}  // Changed from link.href to link.to
+          to={link.to}    // Changed from link.href to link.to
+          className="flex flex-col items-center justify-center text-white hover:text-green-300 p-2"
+          title={link.name}
+        >
+          {link.icon}
+          <span className="text-xs mt-1">{link.name}</span>
+        </Link>
+      ))}
     </div>
   );
 };

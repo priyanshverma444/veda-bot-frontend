@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Flex, Box, Button, Text } from '@chakra-ui/react';
-import bgimg from "../../src/assets/img/veda-bot-bg.png";
+import { Flex, Box, Button, Text, Spinner } from '@chakra-ui/react';
+import Layout from '../components/layout/Layout';
 
 const NearbyDoctors = () => {
   const [location, setLocation] = useState(null);
@@ -32,88 +32,77 @@ const NearbyDoctors = () => {
 
   const redirectToGoogleMaps = (latitude, longitude) => {
     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=Ayurvedic+Doctors+near+${latitude},${longitude}`;
-    window.location.href = mapsUrl; // Redirect to Google Maps
+    window.open(mapsUrl, '_blank'); // Open in new tab (better UX)
   };
 
-  // If loading, show message asking for location access
+  // Loading state
   if (loading) {
     return (
-      <Flex className="flex md:flex-row flex-col justify-center items-center h-screen" style={{
-        backgroundImage: `url(${bgimg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'}}>
-        <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
-          <Text className="text-3xl font-bold text-green-900">Please allow location access to show nearby Ayurvedic doctors.</Text>
-        </Box>
-      </Flex>
+      <Layout>
+        <Flex minH="100vh" justify="center" align="center" direction="column" p={4}>
+          <Spinner size="xl" mb={4} color="green.800" />
+          <Text fontSize="xl" fontWeight="bold" textAlign="center" color="green.900">
+            Please allow location access to find nearby Ayurvedic doctors.
+          </Text>
+        </Flex>
+      </Layout>
     );
   }
 
-  // If there's an error, show error message
+  // Error state
   if (error) {
     return (
-      <Flex className="flex md:flex-row flex-col justify-center items-center h-screen" style={{
-        backgroundImage: `url(${bgimg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'}}>
-        <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
-          <Text color="red.500">{error}</Text>
-        </Box>
-      </Flex>
+      <Layout>
+        <Flex minH="100vh" justify="center" align="center" p={4}>
+          <Text color="red.500" fontSize="lg" textAlign="center">
+            {error}
+          </Text>
+        </Flex>
+      </Layout>
     );
   }
 
-  // Construct the OpenStreetMap URL with the user's location
-  const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${location.longitude - 0.01},${location.latitude - 0.01},${location.longitude + 0.01},${location.latitude + 0.01}&layer=mapnik&marker=${location.latitude},${location.longitude}`;
-
+  // Main content
   return (
-    <Flex className="flex md:flex-row flex-col justify-center items-center h-screen" style={{
-      backgroundImage: `url(${bgimg})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'}}>
-      <Box 
-        display="flex" 
-        flexDirection="column" 
-        alignItems="center" 
-        justifyContent="center" 
-        height="100vh" 
+    <Layout>
+      <Flex
+        direction="column"
+        justify="center"
+        align="center"
+        p={4}
         textAlign="center"
-        color="white"
       >
-        <h1 className='text-4xl font-bold mb-4 text-green-900'>Find Ayurvedic Doctors Near You</h1>
-        <Box 
-          mt={10}
-          mb={10} 
-          rounded="lg" 
-          overflow="hidden" 
-          display="flex" 
-          justifyContent="center"
-          alignItems="center"
-          className="aspect-video"
+        <Box
+          w="100%"
+          maxW="800px"
+          mb={8}
+          borderRadius="lg"
+          overflow="hidden"
+          boxShadow="lg"
         >
-          <iframe 
-            src={mapSrc} 
-            width="100%" 
-            height="400" 
-            style={{ border: 0 }} 
-            allowFullScreen 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade" 
-            className="h-full w-full object-cover"
-          ></iframe>
+          <iframe
+            src={`https://www.openstreetmap.org/export/embed.html?bbox=${location.longitude - 0.01},${location.latitude - 0.01},${location.longitude + 0.01},${location.latitude + 0.01}&layer=mapnik&marker=${location.latitude},${location.longitude}`}
+            width="100%"
+            height="400"
+            style={{ border: 'none' }}
+            allowFullScreen
+            loading="lazy"
+          />
         </Box>
-        <Button 
-          onClick={() => redirectToGoogleMaps(location.latitude, location.longitude)} 
-          bg="green.800"
-          color="white" 
-          size="lg" 
-          mb={4}
-          _hover={{ bg: "green.900" }}
+
+        <Button
+          onClick={() => redirectToGoogleMaps(location.latitude, location.longitude)}
+          bg="green.900"
+          color="white"
+          size="lg"
+          px={8}
+          _hover={{ transform: 'scale(1.05)' }}
+          transition="all 0.2s"
         >
-          Find nearby ayurvedic doctors
+          Find Nearby Ayurvedic Doctors
         </Button>
-      </Box>
-    </Flex>
+      </Flex>
+    </Layout>
   );
 };
 
