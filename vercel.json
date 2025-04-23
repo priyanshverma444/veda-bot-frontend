@@ -1,9 +1,3 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
-  "rewrites": [
-    {
-      "source": "/chatwithbot",
-      "destination": "https://vedabot-ayurveda.streamlit.app/"
-    }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
