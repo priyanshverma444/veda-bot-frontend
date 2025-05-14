@@ -111,7 +111,7 @@ const UserBio = () => {
         />
       </div>
       <div className="w-full flex flex-col items-center justify-center mx-1">
-        <p className="w-fit mx-2 my-1 font-bold text-3xl"> User Bio </p>
+        <p className="w-fit mx-2 my-1 font-bold text-3xl text-green-950"> User Bio </p>
         {isEditingBio ? (
           <div className="w-full flex flex-col justify-center items-center">
             <textarea
@@ -154,10 +154,9 @@ const UserBio = () => {
         ) : (
           <div className="flex justify-center items-center flex-col">
             <Tag
-              className="text-left mt-1 h-20 w-72 overflow-hidden text-ellipsis whitespace-pre-wrap border border-gray-700 p-2 rounded text-white"
+              className="text-left mt-1 h-20 w-72 overflow-hidden text-ellipsis whitespace-pre-wrap border border-gray-700 p-2 rounded text-green-950 font-bold"
               sx={{
-                bg: "zinc.950",
-                color: "white",
+                bg: "zinc.950"
               }}
             >
               {userData.bio || "No bio available"}
