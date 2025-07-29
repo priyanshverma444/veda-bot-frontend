@@ -17,6 +17,7 @@ import { fetchUserData } from "../../../services/userServices";
 
 const Profile = () => {
   const [userData, setUserData] = useState({});
+
   const handleSignOut = () => {
     localStorage.removeItem("token");
     window.location.href = "/signup";
@@ -37,56 +38,57 @@ const Profile = () => {
           className="mx-2"
           as={Avatar}
           size="md"
-          cursor={"pointer"}
+          cursor="pointer"
           src={userData.userImage}
         />
         <MenuList sx={{ backgroundColor: "rgb(5 46 22)" }}>
-          <MenuGroup title={userData.username}>
-            <Link to="/profile">
+          {!isUserAuthenticated() ? (
+            <MenuGroup>
               <MenuItem
                 sx={{
                   backgroundColor: "rgb(5 46 22)",
                   _hover: { textDecoration: "underline" },
                 }}
+                onClick={() => (window.location.href = "/signup")}
               >
-                <BsFillPersonFill className="text-xl mx-2" /> Profile
+                <AiOutlineLogin className="text-xl mx-2 text-green-500" /> SignUp
               </MenuItem>
-            </Link>
-          </MenuGroup>
-          <MenuDivider />
-          <MenuGroup>
-            {/* <Link to="/settings">
+            </MenuGroup>
+          ) : (
+            <MenuGroup title={userData.username}>
+              <Link to="/profile">
+                <MenuItem
+                  sx={{
+                    backgroundColor: "rgb(5 46 22)",
+                    _hover: { textDecoration: "underline" },
+                  }}
+                >
+                  <BsFillPersonFill className="text-xl mx-2" /> Profile
+                </MenuItem>
+              </Link>
+              {/* Uncomment if you want settings */}
+              {/* <Link to="/settings">
+                <MenuItem
+                  sx={{
+                    backgroundColor: "rgb(5 46 22)",
+                    _hover: { textDecoration: "underline" },
+                  }}
+                >
+                  <MdOutlineSettings className="text-xl mx-2" /> Settings
+                </MenuItem>
+              </Link> */}
+              <MenuDivider />
               <MenuItem
                 sx={{
                   backgroundColor: "rgb(5 46 22)",
                   _hover: { textDecoration: "underline" },
                 }}
+                onClick={handleSignOut}
               >
-                <MdOutlineSettings className="text-xl mx-2" /> Settings
+                <AiOutlineLogout className="text-xl mx-2 text-red-500" /> Sign Out
               </MenuItem>
-            </Link> */}
-            {!isUserAuthenticated() ? (
-            <MenuItem
-              sx={{
-                backgroundColor: "rgb(5 46 22)",
-                _hover: { textDecoration: "underline" },
-              }}
-              onClick={() => window.location.href = "/signup"}
-            >
-              <AiOutlineLogin className="text-xl mx-2 text-green-500" /> SignUp
-            </MenuItem>
-            ) : (
-            <MenuItem
-              sx={{
-                backgroundColor: "rgb(5 46 22)",
-                _hover: { textDecoration: "underline" },
-              }}
-              onClick={handleSignOut}
-            >
-              <AiOutlineLogout className="text-xl mx-2 text-red-500" /> Sign Out
-            </MenuItem>
-            )}
-          </MenuGroup>
+            </MenuGroup>
+          )}
         </MenuList>
       </Menu>
     </div>
