@@ -19,6 +19,7 @@ import ManagingStressWithAyurveda from "./routes/blogs/ManagingStressWithAyurved
 import Panchakarma from "./routes/blogs/Panchakarma";
 import AyurvedicBeautySecrets from "./routes/blogs/AyurvedicBeautySecrets";
 import HealthCheckup from "./routes/HealthCheckup";
+import ChatWithOurBot from "./routes/ChatWithOurBot";
 
 
 function App() {
@@ -50,8 +51,8 @@ function App() {
           {loggedIn ? (
             <>
               <Route path="/" element={<Home />} />
-              {/* <Route path="/chatwithbot" element={<Layout></Layout>} /> */}
-              <Route path="/healthcheckup" element={<HealthCheckup />} />
+              <Route path="/chatwithbot" element={<ChatWithOurBot />} />
+              {/* <Route path="/healthcheckup" element={<HealthCheckup />} /> */}
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/yoga-ayurveda" element={<YogaAyurveda />} />
               <Route path="/ayurvedic-herbs" element={<AyurvedicHerbs />} />
@@ -62,7 +63,7 @@ function App() {
               <Route path="/panchakarma" element={<Panchakarma />} />
               <Route path="/ayurvedic-beauty-secrets" element={<AyurvedicBeautySecrets /> } />
               <Route path="/nearbydoctors" element={<NearByDoctors /> }/>
-              <Route path="/helpcenter" element={<Layout></Layout>} />
+              {/* <Route path="/helpcenter" element={<Layout></Layout>} /> */}
               <Route
                 path="/profile"
                 element={
@@ -74,8 +75,8 @@ function App() {
           ) : (
             <>
               <Route path="/" element={<Home />} />
-              {/* <Route path="/chatwithbot" element={<Signup />} /> */}
-              <Route path="/healthcheckup" element={<HealthCheckup />} />
+              <Route path="/chatwithbot" element={<Login />} />
+              {/* <Route path="/healthcheckup" element={<HealthCheckup />} /> */}
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/yoga-ayurveda" element={<YogaAyurveda />} />
               <Route path="/ayurvedic-herbs" element={<AyurvedicHerbs />} />
@@ -85,9 +86,9 @@ function App() {
               <Route path="/managing-stress-with-ayurveda" element={<ManagingStressWithAyurveda /> } />
               <Route path="/panchakarma" element={<Panchakarma />} />
               <Route path="/ayurvedic-beauty-secrets" element={<AyurvedicBeautySecrets /> } />
-              <Route path="/nearbydoctors" element={<NearByDoctors /> } />
-              <Route path="/helpcenter" element={<Layout></Layout>} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/nearbydoctors" element={<Login /> } />
+              {/* <Route path="/helpcenter" element={<Layout></Layout>} /> */}
+              <Route path="/profile" element={<Login />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="*" element={<NotFound />} />

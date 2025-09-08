@@ -10,7 +10,7 @@ const Home = () => {
         <Text
           fontSize="5xl"
           fontWeight="bold"
-          fontFamily="'Dancing Script', cursive"
+          // fontFamily="'Dancing Script', cursive"
           color="green.900"
         >
           Welcome to VedaBot
@@ -18,7 +18,7 @@ const Home = () => {
         <Text
           fontSize="3xl"
           fontWeight="bold"
-          fontFamily="'Dancing Script', cursive"
+          // fontFamily="'Dancing Script', cursive"
           color="green.900"
         >
           Take your health into your hands

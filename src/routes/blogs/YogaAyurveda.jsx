@@ -16,7 +16,7 @@ const YogaAyurveda = () => {
     <Container 
       maxW="800px" 
       p={5} 
-      bg="#f0fced" 
+      bg="#AFD9B1" 
       borderRadius="10px" 
       boxShadow="0 0 10px rgba(0,0,0,0.1)" 
       maxH="85vh" // Limit the height of the container

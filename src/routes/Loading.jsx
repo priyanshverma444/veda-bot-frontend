@@ -25,7 +25,7 @@ const Loading = () => {
         <Text
           fontSize="5xl"
           fontWeight="bold"
-          fontFamily="'Dancing Script', cursive"
+          // fontFamily="'Dancing Script', cursive"
           color="green.900"
         >
           VedaBot
@@ -33,7 +33,7 @@ const Loading = () => {
         <Text
           fontSize="3xl"
           fontWeight="bold"
-          fontFamily="'Dancing Script', cursive"
+          // fontFamily="'Dancing Script', cursive"
           color="green.900"
         >
           Take your health into your hands
