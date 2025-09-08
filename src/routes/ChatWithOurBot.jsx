@@ -20,7 +20,7 @@ const ChatWithOurBot = () => {
 
   // Construct the iframe URL with the user ID
   const iframeUrl = userId
-    ? `https://veda-bot.streamlit.app/?embedded=true&userId=${userId}` // Replace with your deployed bot URL
+    ? `https://veda-bot.streamlit.app/?embed=true&userId=${userId}` // Replace with your deployed bot URL
     : "about:blank"; // Empty until user ID is loaded
 
   return (
