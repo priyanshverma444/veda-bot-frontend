@@ -10,7 +10,6 @@ const ChatWithOurBot = () => {
   useEffect(() => {
     const loadUser = async () => {
       const userData = await fetchUserData();
-
       if (userData && userData._id) {
         setUserId(userData._id);
       }
@@ -25,6 +24,12 @@ const ChatWithOurBot = () => {
 
   return (
     <Layout>
+      {loading && (
+        <div className="fixed inset-0 flex justify-center items-center bg-white z-50">
+          <Loading />
+        </div>
+      )}
+
       <div
         style={{
           display: "flex",
@@ -35,13 +40,6 @@ const ChatWithOurBot = () => {
           width: "100%",
         }}
       >
-        {/* Show loader while iframe is loading */}
-        {loading && (
-          <div className="absolute inset-0 flex justify-center items-center bg-white z-10">
-            <Loading />
-          </div>
-        )}
-
         <iframe
           src={iframeUrl}
           title="VedaBot Chat"
@@ -53,7 +51,7 @@ const ChatWithOurBot = () => {
             marginBottom: "4px",
           }}
           allowFullScreen
-          onLoad={() => setLoading(false)} // Hide loader once iframe is loaded
+          onLoad={() => setLoading(false)}
         ></iframe>
       </div>
     </Layout>
