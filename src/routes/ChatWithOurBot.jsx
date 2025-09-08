@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Layout from "../components/layout/Layout";
 import { fetchUserData } from "../services/userServices";
+import Loading from "./Loading";
 
 const ChatWithOurBot = () => {
   const [userId, setUserId] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadUser = async () => {
@@ -18,7 +20,6 @@ const ChatWithOurBot = () => {
   }, []);
 
   const baseUrl = import.meta.env.VITE_CHATBOT_URL;
-
   const iframeUrl =
     userId && baseUrl ? `${baseUrl}/?userId=${userId}` : "about:blank";
 
@@ -29,8 +30,18 @@ const ChatWithOurBot = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          position: "relative",
+          minHeight: "80vh",
+          width: "100%",
         }}
       >
+        {/* Show loader while iframe is loading */}
+        {loading && (
+          <div className="absolute inset-0 flex justify-center items-center bg-white z-10">
+            <Loading />
+          </div>
+        )}
+
         <iframe
           src={iframeUrl}
           title="VedaBot Chat"
@@ -42,6 +53,7 @@ const ChatWithOurBot = () => {
             marginBottom: "4px",
           }}
           allowFullScreen
+          onLoad={() => setLoading(false)} // Hide loader once iframe is loaded
         ></iframe>
       </div>
     </Layout>

@@ -33,7 +33,7 @@ const Nav = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`flex items-center hover:text-green-700 ${
+              className={`flex items-center hover:text-green-800 ${
                 isActive ? "text-green-800 underline" : "text-green-950 hover:underline"
               } font-bold py-2.5 px-4 mx-5`}
             >
