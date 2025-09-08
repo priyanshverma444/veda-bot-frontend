@@ -66,17 +66,6 @@ const Profile = () => {
                   <BsFillPersonFill className="text-xl mx-2" /> Profile
                 </MenuItem>
               </Link>
-              {/* Uncomment if you want settings */}
-              {/* <Link to="/settings">
-                <MenuItem
-                  sx={{
-                    backgroundColor: "rgb(5 46 22)",
-                    _hover: { textDecoration: "underline" },
-                  }}
-                >
-                  <MdOutlineSettings className="text-xl mx-2" /> Settings
-                </MenuItem>
-              </Link> */}
               <MenuDivider />
               <MenuItem
                 sx={{

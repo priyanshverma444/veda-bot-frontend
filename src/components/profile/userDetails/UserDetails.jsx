@@ -10,7 +10,7 @@ function UserDetails({ label, value }) {
                 color: "white", 
                 width: "100%",
                 textAlign: "center",
-                padding: "15px 80px 15px 10px", 
+                padding: "8px 0px 15px 10px", 
             }}
         >
             {value}

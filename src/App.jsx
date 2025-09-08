@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Layout from "./components/layout/Layout";
 import Login from "./routes/Login";
 import Signup from "./routes/SignUp";
 import Profile from "./routes/Profile";
@@ -18,13 +17,11 @@ import SeasonalAyurvedicPractices from "./routes/blogs/SeasonalAyurvedicPractice
 import ManagingStressWithAyurveda from "./routes/blogs/ManagingStressWithAyurveda";
 import Panchakarma from "./routes/blogs/Panchakarma";
 import AyurvedicBeautySecrets from "./routes/blogs/AyurvedicBeautySecrets";
-import HealthCheckup from "./routes/HealthCheckup";
 import ChatWithOurBot from "./routes/ChatWithOurBot";
-
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(true); // Added loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchUserData()
@@ -34,13 +31,11 @@ function App() {
         }
       })
       .finally(() => {
-        // Authentication check is complete, set loading to false
         setLoading(false);
       });
   }, []);
 
   if (loading) {
-    // Return a loading indicator or some other UI
     return <Loading />;
   }
 
@@ -52,42 +47,51 @@ function App() {
             <>
               <Route path="/" element={<Home />} />
               <Route path="/chatwithbot" element={<ChatWithOurBot />} />
-              {/* <Route path="/healthcheckup" element={<HealthCheckup />} /> */}
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/yoga-ayurveda" element={<YogaAyurveda />} />
               <Route path="/ayurvedic-herbs" element={<AyurvedicHerbs />} />
               <Route path="/ayurvedic-diet" element={<AyurvedicDiet />} />
               <Route path="/holistic-healing" element={<HolisticHealing />} />
-              <Route path="/seasonal-ayurvedic-practices" element={<SeasonalAyurvedicPractices /> } />
-              <Route path="/managing-stress-with-ayurveda" element={<ManagingStressWithAyurveda /> } />
-              <Route path="/panchakarma" element={<Panchakarma />} />
-              <Route path="/ayurvedic-beauty-secrets" element={<AyurvedicBeautySecrets /> } />
-              <Route path="/nearbydoctors" element={<NearByDoctors /> }/>
-              {/* <Route path="/helpcenter" element={<Layout></Layout>} /> */}
               <Route
-                path="/profile"
-                element={
-                  <Profile />
-                }
+                path="/seasonal-ayurvedic-practices"
+                element={<SeasonalAyurvedicPractices />}
               />
+              <Route
+                path="/managing-stress-with-ayurveda"
+                element={<ManagingStressWithAyurveda />}
+              />
+              <Route path="/panchakarma" element={<Panchakarma />} />
+              <Route
+                path="/ayurvedic-beauty-secrets"
+                element={<AyurvedicBeautySecrets />}
+              />
+              <Route path="/nearbydoctors" element={<NearByDoctors />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="*" element={<NotFound />} />
             </>
           ) : (
             <>
               <Route path="/" element={<Home />} />
               <Route path="/chatwithbot" element={<Login />} />
-              {/* <Route path="/healthcheckup" element={<HealthCheckup />} /> */}
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/yoga-ayurveda" element={<YogaAyurveda />} />
               <Route path="/ayurvedic-herbs" element={<AyurvedicHerbs />} />
               <Route path="/ayurvedic-diet" element={<AyurvedicDiet />} />
               <Route path="/holistic-healing" element={<HolisticHealing />} />
-              <Route path="/seasonal-ayurvedic-practices" element={<SeasonalAyurvedicPractices /> } />
-              <Route path="/managing-stress-with-ayurveda" element={<ManagingStressWithAyurveda /> } />
+              <Route
+                path="/seasonal-ayurvedic-practices"
+                element={<SeasonalAyurvedicPractices />}
+              />
+              <Route
+                path="/managing-stress-with-ayurveda"
+                element={<ManagingStressWithAyurveda />}
+              />
               <Route path="/panchakarma" element={<Panchakarma />} />
-              <Route path="/ayurvedic-beauty-secrets" element={<AyurvedicBeautySecrets /> } />
-              <Route path="/nearbydoctors" element={<Login /> } />
-              {/* <Route path="/helpcenter" element={<Layout></Layout>} /> */}
+              <Route
+                path="/ayurvedic-beauty-secrets"
+                element={<AyurvedicBeautySecrets />}
+              />
+              <Route path="/nearbydoctors" element={<Login />} />
               <Route path="/profile" element={<Login />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />

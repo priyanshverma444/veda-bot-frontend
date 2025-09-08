@@ -21,11 +21,6 @@ const Nav = () => {
       name: "Nearby doctors",
       icon: <FaUserDoctor className="w-9 h-9 mx-1" />,
     },
-    // {
-    //   to: "/healthcheckup",
-    //   name: "Health Checkup",
-    //   icon: <TbCheckupList className="w-9 h-9 mx-1" />,
-    // },
   ];
   const location = useLocation();
 
@@ -38,8 +33,8 @@ const Nav = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`flex items-center ${
-                isActive ? "text-green-800" : "text-green-900 hover:underline"
+              className={`flex items-center hover:text-green-700 ${
+                isActive ? "text-green-800 underline" : "text-green-950 hover:underline"
               } font-bold py-2.5 px-4 mx-5`}
             >
               {link.icon}

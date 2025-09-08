@@ -101,21 +101,13 @@ const UserBio = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-full mt-3">
-      <div className="flex justify-center">
-        <Image
-          borderRadius="full"
-          boxSize="150px"
-          as={Avatar}
-          src={userData.userImage}
-        />
-      </div>
+    <div className="flex flex-col justify-center items-center h-full">
       <div className="w-full flex flex-col items-center justify-center mx-1">
         <p className="w-fit mx-2 my-1 font-bold text-3xl text-green-950"> User Bio </p>
         {isEditingBio ? (
           <div className="w-full flex flex-col justify-center items-center">
             <textarea
-              className="w-72 p-2 px-3 h-20 mt-1 shadow appearance-none border border-gray-700 hover:border-gray-400 bg-green-950 text-white rounded leading-tight focus:outline-none focus:shadow-outline resize-none"
+              className="w-72 p-2 px-3 h-20 mt-1 shadow appearance-none border bg-green-950 text-white rounded leading-tight focus:outline-none focus:shadow-outline resize-none"
               name="text"
               type="text"
               maxLength={100}
@@ -167,11 +159,11 @@ const UserBio = () => {
               colorScheme="gray"
               className="w-fit cursor-pointer mt-8 text-white"
               sx={{
-                bg: "teal.800",
+                bg: "green.900",
                 color: "white",
                 cursor: "pointer",
                 _hover: {
-                  bg: "teal.700",
+                  bg: "green.800",
                 },
               }}
               onClick={() => setIsEditingBio(true)}
@@ -184,7 +176,7 @@ const UserBio = () => {
       </div>
       {!isImageUploadVisible && (
         <button
-          className="mt-20 p-1 bg-teal-800 hover:bg-teal-700 text-white text-sm font-bold rounded focus:outline-none focus:shadow-outline"
+          className="mt-20 p-1 bg-green-900 hover:bg-green-800 text-white text-sm font-bold rounded focus:outline-none focus:shadow-outline"
           type="button"
           onClick={() => setIsImageUploadVisible(true)}
           disabled={isLoading}

@@ -27,6 +27,7 @@ import Layout from '../../components/layout/Layout';
           boxShadow="0 0 10px rgba(0,0,0,0.1)" 
           maxH="85vh" // Limit the height of the container
           overflowY="auto" // Allow vertical scrolling if content exceeds height
+          mb={28}
         >
           <VStack spacing={5}>
             <Heading as="h2" color="green.900" fontFamily="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">

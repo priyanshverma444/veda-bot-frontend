@@ -9,7 +9,6 @@ const ChatWithOurBot = () => {
     const loadUser = async () => {
       const userData = await fetchUserData();
 
-      // Use _id instead of id
       if (userData && userData._id) {
         setUserId(userData._id);
       }
@@ -18,22 +17,29 @@ const ChatWithOurBot = () => {
     loadUser();
   }, []);
 
-  // Construct the iframe URL with the user ID
-  const iframeUrl = userId
-    ? `https://veda-bot.streamlit.app/?embed=true&userId=${userId}` // Replace with your deployed bot URL
-    : "about:blank"; // Empty until user ID is loaded
+  const baseUrl = import.meta.env.VITE_CHATBOT_URL;
+
+  const iframeUrl =
+    userId && baseUrl ? `${baseUrl}/?userId=${userId}` : "about:blank";
 
   return (
     <Layout>
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <iframe
           src={iframeUrl}
           title="VedaBot Chat"
           style={{
             width: "95%",
-            height: "85vh",
+            height: "80vh",
             border: "none",
             borderRadius: "10px",
+            marginBottom: "4px",
           }}
           allowFullScreen
         ></iframe>
