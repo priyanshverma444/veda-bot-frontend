@@ -11,6 +11,7 @@ import {
   InputRightElement,
   Text,
   Image,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import axios from "axios";
 import logo from "../../src/assets/img/veda-bot-favicon.png";
@@ -32,12 +33,49 @@ const SignUp = () => {
     import.meta.env.VITE_BACKEND_URI || "http://localhost:5001";
   const apiKey = import.meta.env.VITE_API_KEY;
   const [show, setShow] = useState(false);
+  const [error, setError] = useState(""); // Password error
+  const [loading, setLoading] = useState(false);
   const toast = useToast();
 
   const handleShow = () => setShow(!show);
 
+  // Password Validation
+  const validatePassword = (password) => {
+    if (password.length < 8)
+      return "Password must be at least 8 characters long.";
+    if (!/[A-Z]/.test(password))
+      return "Password must contain at least one uppercase letter.";
+    if (!/[a-z]/.test(password))
+      return "Password must contain at least one lowercase letter.";
+    if (!/[0-9]/.test(password))
+      return "Password must contain at least one number.";
+    if (!/[@$!%*?&]/.test(password))
+      return "Password must contain at least one special character.";
+    return "";
+  };
+
+  // Handle Password Change
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setFormData({ ...formData, password: newPassword });
+    setError(validatePassword(newPassword));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (error) {
+      toast({
+        title: "Weak Password!",
+        description: error,
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+      return;
+    }
+
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -63,7 +101,6 @@ const SignUp = () => {
         });
         window.location.href = "/";
       } else {
-        console.error("Registration failed");
         toast({
           title: "Registration failed",
           description: "Please check your inputs",
@@ -74,11 +111,6 @@ const SignUp = () => {
       }
     } catch (error) {
       console.error("Error:", error);
-      if (error.response && error.response.status === 404) {
-        console.error("Error 404: API endpoint not found");
-      } else {
-        console.error("Error:", error.message);
-      }
       toast({
         title: "An error occurred",
         description: "Please try again later",
@@ -86,6 +118,8 @@ const SignUp = () => {
         duration: 3000,
         isClosable: true,
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -98,11 +132,14 @@ const SignUp = () => {
   };
 
   return (
-    <Flex className="flex justify-center items-center h-screen" style={{
-      backgroundImage: `url(${bgimg})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    }}>
+    <Flex
+      className="flex justify-center items-center h-screen"
+      style={{
+        backgroundImage: `url(${bgimg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <Box
         as="form"
         onSubmit={handleSubmit}
@@ -203,14 +240,17 @@ const SignUp = () => {
               />
             </FormControl>
           </Flex>
-          <FormControl mb="4">
+
+          {/* Password with Validation */}
+          <FormControl mb="4" isInvalid={!!error}>
             <InputGroup size="md">
               <Input
                 required
                 type={show ? "text" : "password"}
                 name="password"
                 placeholder="Enter your password"
-                onChange={handleInputChange}
+                value={formData.password}
+                onChange={handlePasswordChange}
                 focusBorderColor="white"
               />
               <InputRightElement width="4.5rem">
@@ -219,7 +259,9 @@ const SignUp = () => {
                 </Button>
               </InputRightElement>
             </InputGroup>
+            {error && <FormErrorMessage>{error}</FormErrorMessage>}
           </FormControl>
+
           <Flex className="flex items-center justify-center space-x-2">
             <Button
               type="submit"
@@ -231,6 +273,8 @@ const SignUp = () => {
               px={4}
               rounded="md"
               _focus={{ outline: "none", shadow: "outline" }}
+              isDisabled={loading || !!error}
+              isLoading={loading}
             >
               Sign Up
             </Button>

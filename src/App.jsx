@@ -18,6 +18,8 @@ import ManagingStressWithAyurveda from "./routes/blogs/ManagingStressWithAyurved
 import Panchakarma from "./routes/blogs/Panchakarma";
 import AyurvedicBeautySecrets from "./routes/blogs/AyurvedicBeautySecrets";
 import ChatWithOurBot from "./routes/ChatWithOurBot";
+import ForgotPassword from "./routes/ForgotPassword";
+import ResetPassword from "./routes/ResetPassword";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -95,6 +97,8 @@ function App() {
               <Route path="/profile" element={<Login />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="*" element={<NotFound />} />
             </>
           )}
