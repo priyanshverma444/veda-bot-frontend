@@ -61,6 +61,22 @@ const SignUp = () => {
     setError(validatePassword(newPassword));
   };
 
+  // Handle redirect to login with optional message
+  const redirectToLogin = (message = null, delay = 2000) => {
+    if (message) {
+      toast({
+        title: "Redirecting to Login",
+        description: message,
+        status: "info",
+        duration: delay,
+        isClosable: true,
+      });
+    }
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, delay);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -89,35 +105,110 @@ const SignUp = () => {
         }
       );
 
-      if (response.status === 200) {
+      // Handle successful registration
+      if (response.status === 201) {
         localStorage.setItem("token", response.data.accessToken);
         e.target.reset();
         toast({
-          title: "Registration successful",
-          description: "Your account has been created",
+          title: "Registration Successful!",
+          description: "Your account has been created successfully",
           status: "success",
           duration: 3000,
           isClosable: true,
         });
-        window.location.href = "/";
-      } else {
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1500);
+      }
+    } catch (error) {
+      console.error("Registration Error:", error);
+      
+      if (error.response) {
+        const { status, data } = error.response;
+        
+        // Handle user already exists scenario
+        if (status === 409 && data.action === "redirect_to_login") {
+          toast({
+            title: "Account Already Exists",
+            description: data.message,
+            status: "warning",
+            duration: 4000,
+            isClosable: true,
+          });
+          
+          // Show additional guidance toast
+          setTimeout(() => {
+            toast({
+              title: "Redirecting to Login",
+              description: "Taking you to the login page...",
+              status: "info",
+              duration: 2000,
+              isClosable: true,
+            });
+          }, 1000);
+          
+          // Redirect to login after showing messages
+          redirectToLogin(null, 3000);
+          return;
+        }
+        
+        // Handle other specific error cases
+        switch (status) {
+          case 400:
+            toast({
+              title: "Invalid Input",
+              description: data.message || "Please check your information and try again",
+              status: "error",
+              duration: 4000,
+              isClosable: true,
+            });
+            break;
+          case 401:
+            toast({
+              title: "Unauthorized",
+              description: "Authentication failed. Please refresh and try again.",
+              status: "error",
+              duration: 4000,
+              isClosable: true,
+            });
+            break;
+          case 500:
+            toast({
+              title: "Server Error",
+              description: data.message || "Registration failed due to server error",
+              status: "error",
+              duration: 4000,
+              isClosable: true,
+            });
+            break;
+          default:
+            toast({
+              title: "Registration Failed",
+              description: data.message || "Please check your inputs and try again",
+              status: "error",
+              duration: 4000,
+              isClosable: true,
+            });
+        }
+      } else if (error.request) {
+        // Network error
         toast({
-          title: "Registration failed",
-          description: "Please check your inputs",
+          title: "Connection Error",
+          description: "Unable to connect to server. Please check your internet connection.",
           status: "error",
-          duration: 3000,
+          duration: 4000,
+          isClosable: true,
+        });
+      } else {
+        // Other errors
+        toast({
+          title: "Registration Failed",
+          description: "An unexpected error occurred. Please try again.",
+          status: "error",
+          duration: 4000,
           isClosable: true,
         });
       }
-    } catch (error) {
-      console.error("Error:", error);
-      toast({
-        title: "An error occurred",
-        description: "Please try again later",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
     } finally {
       setLoading(false);
     }
@@ -275,6 +366,7 @@ const SignUp = () => {
               _focus={{ outline: "none", shadow: "outline" }}
               isDisabled={loading || !!error}
               isLoading={loading}
+              loadingText="Creating Account..."
             >
               Sign Up
             </Button>

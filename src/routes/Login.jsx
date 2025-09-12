@@ -278,7 +278,7 @@ const Login = () => {
             Sign Up
           </Button>
         </Flex>
-        <Flex className="flex items-center justify-center space-x-2">
+        {/* <Flex className="flex items-center justify-center space-x-2">
           <Button
             bg="white"
             color="teal.800"
@@ -288,7 +288,7 @@ const Login = () => {
           >
             Forgot Password? Reset
           </Button>
-        </Flex>
+        </Flex> */}
       </Box>
     </Flex>
   );
